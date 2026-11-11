@@ -9,7 +9,7 @@ const films = [
 const liste = document.querySelector("#liste");
 
 // Création d'un élément
-films.forEach((film, key) => {
+films.forEach(film => {
 
     // Créer le li général
     const li = document.createElement("li");
@@ -37,8 +37,12 @@ films.forEach((film, key) => {
         li.remove();
 
         // Suppression de l'élément dans la liste de film
-        // const key = films.indexOf(film) <== Dans le cas où on n'utilise pas key dans le foreach
+        const key = films.indexOf(film)
         films.splice(key, 1)
+
+        // Rafraichit le compteur
+        console.log(films)
+        refreshCompteur(films)
     })
 
     // Assemble le li
@@ -51,10 +55,14 @@ films.forEach((film, key) => {
 
 })
 
-// Créer le compteur
-const compteur = document.querySelector("#compteur");
-const viewFilm = films
-                    .filter(film => film.vu)
-                    .length
+function refreshCompteur(data) {
+    // Créer le compteur
+    const compteur = document.querySelector("#compteur");
+    const viewFilm = data
+                        .filter(film => film.vu)
+                        .length
 
-compteur.textContent = `${films.length} film(s), dont ${viewFilm} vu(s)`
+    compteur.textContent = `${data.length} film(s), dont ${viewFilm} vu(s)`
+}
+
+refreshCompteur(films)
