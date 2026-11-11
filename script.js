@@ -8,7 +8,9 @@ const films = [
 
 const liste = document.querySelector("#liste");
 
+// Création d'un élément
 films.forEach((film, key) => {
+
     // Créer le li général
     const li = document.createElement("li");
     li.classList.add("film");
@@ -48,3 +50,11 @@ films.forEach((film, key) => {
     liste.appendChild(li);
 
 })
+
+// Créer le compteur
+const compteur = document.querySelector("#compteur");
+const viewFilm = films
+                    .filter(film => film.vu)
+                    .length
+
+compteur.textContent = `${films.length} film(s), dont ${viewFilm} vu(s)`
