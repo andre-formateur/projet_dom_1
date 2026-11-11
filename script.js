@@ -19,6 +19,10 @@ films.forEach(film => {
         li.classList.add("vu");
     }
 
+    if(film.genre === "Science-fiction") {
+        li.classList.add("sf")
+    }
+
     // Créer le titre
     const titre = document.createElement("span");
     titre.classList.add("titre");
